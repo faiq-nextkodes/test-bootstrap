@@ -1,0 +1,36 @@
+<title> All Tasks </title>
+
+<div class="container-mb-4">
+    <div class="row">
+        <%= link_to "Add Tasks", new_task_path, class: "btn btn-success fw-bold" %>
+    </div>
+    <ol class="list-group list-group-numbered">
+        <% @tasks.each do |task| %>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+            <div class="row">
+                <div class="col">
+                    <div class="fw-bold">
+                        <%= task.title %>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="fw-bold">
+                        <%= task.completed ? "Complete" : "Incomplete" %>
+                    </div>
+                </div>
+                <div class="col">
+                    <%= link_to "Edit", edit_task_path(task), class: "btn btn-warning" %>
+                </div>
+                <div class="col">
+                    <%= button_to "Delete", task_path(task), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+                </div>
+            </div>
+            <div class="row">
+                
+            </div>
+        </div>
+        </li>
+        <% end %>
+    </ol>
+</div>   
